@@ -1,1 +1,190 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yiwei · 科技感</title>
+    <!-- 现代无衬线字体 + 显示字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400&display=swap"
+    rel="stylesheet"
+    />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #07080b;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            /* 细微的纹理背景 */
+            background-image:
+                linear-gradient(rgba(50, 170, 250, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(50, 170, 250, 0.03) 1px, transparent 1px);
+            background-size: 44px 44px;
+        }
+
+        .card {
+            background: #0d1017;
+            border-radius: 52px;
+            padding: 46px 58px;
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.95),
+                0 0 0 1px rgba(80, 180, 255, 0.10) inset,
+                0 0 80px rgba(30, 140, 255, 0.04);
+            transition: box-shadow 0.3s ease;
+            max-width: 92vw;
+            position: relative;
+        }
+
+        /* 微弱的外发光晕 */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 120%;
+            height: 140%;
+            background: radial-gradient(circle at 30% 40%, rgba(38, 130, 255, 0.06), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.02em;
+            user-select: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero span {
+            display: inline-block;
+            font-size: clamp(5.2rem, 23vw, 15rem);
+            font-weight: 700;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            font-family: 'Space Grotesk', sans-serif;
+
+            /* 蓝 → 紫 → 青 */
+            background: linear-gradient(
+                135deg,
+                #00d4ff 0%,
+                #3b82f6 33%,
+                #8b5cf6 66%,
+                #06e0ff 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            /* 多层发光 */
+            filter:
+                drop-shadow(0 0 18px rgba(0, 180, 255, 0.55))
+                drop-shadow(0 0 50px rgba(59, 130, 246, 0.25))
+                drop-shadow(0 0 8px rgba(139, 92, 246, 0.20));
+
+            transition: transform 0.20s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+            will-change: transform, filter;
+        }
+
+        /* 悬停更亮 + 轻微位移 */
+        .hero span:hover {
+            transform: scale(1.04) translateY(-4px);
+            filter:
+                drop-shadow(0 0 30px rgba(0, 212, 255, 0.85))
+                drop-shadow(0 0 70px rgba(59, 130, 246, 0.45))
+                drop-shadow(0 0 20px rgba(139, 92, 246, 0.40));
+        }
+
+        /* 装饰线 */
+        .sub {
+            margin-top: 18px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+            letter-spacing: 0.42em;
+            text-transform: uppercase;
+            color: rgba(96, 186, 255, 0.25);
+            border-top: 1px solid rgba(72, 172, 255, 0.08);
+            padding-top: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 小点缀 */
+        .sub::before {
+            content: '◆';
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 0.5rem;
+            color: rgba(0, 191, 255, 0.30);
+            vertical-align: middle;
+        }
+        .sub::after {
+            content: '◇';
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 0.5rem;
+            color: rgba(138, 43, 226, 0.30);
+            vertical-align: middle;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .card {
+                padding: 30px 24px;
+                border-radius: 32px;
+            }
+            .sub {
+                letter-spacing: 0.2em;
+                font-size: 0.6rem;
+            }
+            .sub::before,
+            .sub::after {
+                font-size: 0.4rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .card {
+                padding: 20px 14px;
+                border-radius: 24px;
+            }
+            .hero span {
+                font-size: clamp(3.2rem, 24vw, 4.6rem);
+            }
+            .hero {
+                flex-wrap: wrap;
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="hero" aria-label="yiwei">
+            <span>y</span>
+            <span>i</span>
+            <span>w</span>
+            <span>e</span>
+            <span>i</span>
+        </div>
+        <div class="sub">// yiwei!  //</div>
+    </div>
+</body>
+</html>
